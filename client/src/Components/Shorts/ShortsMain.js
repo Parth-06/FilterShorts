@@ -12,7 +12,6 @@ const ShortsMain = (props) => {
     threshold: []
   });
 const videoRef = useRef([])
-const volumeRef = useRef([])
 const userdata = props.userdata
 const apidata = props.apidata
 const { topicstate: {query}, dispatch} = Postdetails();
@@ -33,17 +32,15 @@ const handlevideoclick = (index) =>{
 if (playing){
   videoRef.current[index].pause();
   setPlaying(false)
-  // console.log(videoRef.current[index]);
+ 
 }else{
   videoRef.current[index].play();
   setPlaying(true)
-  // console.log(videoRef.current[index]);
+ 
 }
 }
 
-const handlevolume = (index) =>{
-  videoRef.current[index].volume = 1.0;
-}
+
 useEffect((index) => {
   if(inView){
     console.log(ref[index]);
@@ -113,12 +110,9 @@ useEffect((index) => {
               <p onClick={()=>navigate("/")} style={location.pathname === "/" ? {color:"rgb(221, 6, 78)", fontWeight:"600"} : {color:"white"}}>For You</p>
               <p onClick={()=>navigate("./following")} style={location.pathname === "/following" ? {color:"rgb(221, 6, 78)", fontWeight:"600"} : {color:"white"}}>Following</p>
              </div>
-             {/* <div className="volume_control">
-             <i className="fas fa-volume-up" onClick={handlevolume(index)} ref={(element) => {volumeRef.current[index] = element}}> </i>
-             <i class="fas fa-volume-mute"></i>
-             </div> */}
+            
              <video src={item.video}  loop ref={(element) => {videoRef.current[index] = element}} onClick={()=>handlevideoclick(index)} />
-             {/* <video src={item.video}  loop ref={(element) => {videoRef.current[index] = element}} onClick={()=>handlevideoclick(index)} /> */}
+           
            
             <div className="like_sec">
            <div className="onlylikes">

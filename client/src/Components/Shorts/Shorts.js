@@ -92,7 +92,7 @@ import Spinner from "../Spinner";
                 payload: item.username,
               })}>Follow</button>
              }
-            {/* <button className='followbtn'>Follow</button> */}
+          
             </div>
             <div className="video_area">
             <video src={item.video} controls/>

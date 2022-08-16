@@ -1,15 +1,11 @@
 import React from 'react'
 import {  useLocation, useNavigate } from 'react-router-dom';
-import { Postdetails } from '../../Context/FetchData';
 import ConnectCompo from '../Connect/ConnectCompo';
 import "./SideHeader.css"
-import { useInView } from 'react-intersection-observer';
+
 const SideHeader = () => {
-  const { ref, inView } = useInView({
-    threshold: 0
-  });
+
   const navigate = useNavigate();
-  const {  topicdispatch } = Postdetails();
   const location = useLocation();
       if (location.pathname === "/upload")
         return null;
@@ -52,14 +48,13 @@ const SideHeader = () => {
   <p className='marginp'>Accounts to Follow</p>
   <div className="accounts_main">
   <div className="accounts" >
-    {/* <div className="avatar" style={{marginLeft:"0rem"}}></div>
-    <h4>Parth Thakkar</h4> */}
+
    <ConnectCompo/>
   </div>
   
-  <div className="see_all" onClick={()=>navigate("/connect")}  inView={inView} ref={ref}>
+  <div className="see_all" onClick={()=>navigate("/connect")}   >
     See all 
-     {/* {inView.toString()} */}
+   
   </div>
   </div>
         </ul>

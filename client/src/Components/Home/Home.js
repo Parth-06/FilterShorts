@@ -30,7 +30,7 @@ const Home = () => {
   return (
     <>
 
-    {/* <Router> */}
+ 
     
         <TopHeader/>
         <BottomHeader/>
@@ -61,7 +61,7 @@ const Home = () => {
         </Routes>
         <SideHeader/>
        
-        {/* </Router> */}
+       
         <ToastContainer  position= "top-center"
       autoClose={500}
       hideProgressBar= {true}

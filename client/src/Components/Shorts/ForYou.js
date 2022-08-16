@@ -11,13 +11,6 @@ const ForYou = () => {
   const navigate= useNavigate();
   const [userdata, setuserdata] = useState([])
   const { apidata , newData} = Postdetails();
- 
-  // if (searchQuery !== "") {
-  //   console.log("KUCH TO AAYA");
-  //   newdata = newdata.filter((items) =>
-  //     items.name.toLowerCase().includes(searchQuery)
-  //   );
-  // }
 
 
   useEffect(() => {
