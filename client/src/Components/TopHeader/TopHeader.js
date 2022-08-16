@@ -1,0 +1,68 @@
+import React, { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Postdetails } from '../../Context/FetchData';
+import "./TopHeader.css"
+
+
+const TopHeader = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [userdata, setuserdata] = useState([])
+  const { newData, topicdispatch } = Postdetails();
+  useEffect(() => {
+    const Callmainpage = async () => {
+    
+      try {
+          const res = await fetch("/home", {
+              method: "GET",
+              headers: {
+  
+                  "Content-Type": "application/json",
+                  Accept: "application/json"
+              },
+              credentials: "include"
+          });
+          const user = await res.json();
+          setuserdata(user)
+          if (!res.status === 200) {
+              const error = new Error(res.error);
+              throw error;
+              
+          }
+      } catch (err) {
+          console.log(err);
+          // toast.error("Please Login For Better Experience")
+          navigate("/login");      
+      }
+  }
+    Callmainpage()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[newData]);
+
+      if (location.pathname === "/login")
+        return null;
+        if (location.pathname === "/fullscreenpost")
+        return null;
+        
+  return (
+    <div className='topheader'>
+        <div className="logo" onClick={()=>navigate("/")}>
+            <h1>FilterShorts</h1>
+        </div>
+        <div className="search_section">
+                    <li className="search_bar1" >
+                         <input type="text" className="search_bar1"
+                        placeholder="Search Here for topics, users or more " onChange={(e) => topicdispatch({ type: "search", payload: e.target.value })}/>
+                    </li>
+                    {/* <i className="fas fa-search fa-lg"></i> */}
+                </div>
+                <div className="header_icons">
+                <i className="fas fa-cloud-upload-alt" onClick={()=>navigate("/upload")}></i>
+                <img src={userdata.profilepicimage} className="avatar" alt=''  style={{objectFit:"cover"}} onClick={()=>navigate("/profile")}/>
+                {/* <div className="avatar" onClick={()=>navigate("/profile")}></div> */}
+                </div>
+    </div>
+  )
+}
+
+export default TopHeader
