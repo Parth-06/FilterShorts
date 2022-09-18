@@ -27,8 +27,6 @@ const TopHeader = () => {
         }
       } catch (err) {
         console.log(err);
-        // toast.error("Please Login For Better Experience")
-        navigate("/login");
       }
     };
     Callmainpage();

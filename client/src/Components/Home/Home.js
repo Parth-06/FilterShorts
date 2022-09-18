@@ -32,8 +32,8 @@ const Home = () => {
       <TopHeader />
       <BottomHeader />
       <Routes>
-        <Route path="/profile" element={<Profile />} />
         <Route path="/" element={<ForYou />} />
+        <Route path="/profile" element={<Profile />} />
         <Route exact path="/following" element={<Following />} />
         <Route path="/editprofile" element={<EditProfile />} />
         <Route path="/upload" element={<Upload />} />
